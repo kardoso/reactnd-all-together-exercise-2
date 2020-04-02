@@ -19,6 +19,9 @@ class InputForm extends Component {
       username: this.props.username,
       text: this.state.messageContent
     })
+    this.setState(() => ({
+      messageContent: ''
+    }))
   }
 
   render() {
