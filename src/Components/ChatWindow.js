@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Message from './Message'
 
 class ChatWindow extends Component {
   /*
@@ -20,16 +21,11 @@ class ChatWindow extends Component {
 
         <ul className="message-list">
           {this.props.messages.map((message, index) => (
-            <li
-              key={index}
-              className={
-                message.username === this.props.users[this.props.user].username
-                  ? 'message sender'
-                  : 'message recipient'
-              }
-            >
-              <p>{`${message.username}: ${message.text}`}</p>
-            </li>
+            <Message
+              index={index}
+              username={this.props.users[this.props.user].username}
+              message={message}
+            />
           ))}
         </ul>
 
