@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class InputForm extends Component {
   state = {
@@ -10,6 +11,14 @@ class InputForm extends Component {
   */
   isDisabled = () => {
     return this.state.messageContent === ''
+  }
+
+  sendMessage = e => {
+    e.preventDefault()
+    this.props.updateMessages({
+      username: this.props.username,
+      text: this.state.messageContent
+    })
   }
 
   render() {
@@ -24,7 +33,12 @@ class InputForm extends Component {
             onChange={e => this.setState({ messageContent: e.target.value })}
           />
           <div className="input-group-append">
-            <button className="btn submit-button" disabled={this.isDisabled()}>
+            <button
+              type="submit"
+              className="btn submit-button"
+              disabled={this.isDisabled()}
+              onClick={this.sendMessage}
+            >
               SEND
             </button>
           </div>
@@ -35,3 +49,8 @@ class InputForm extends Component {
 }
 
 export default InputForm
+
+InputForm.propTypes = {
+  username: PropTypes.string.isRequired,
+  updateMessages: PropTypes.func.isRequired
+}

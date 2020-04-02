@@ -19,7 +19,10 @@ function ChatWindow(props) {
         ))}
       </ul>
 
-      <InputForm />
+      <InputForm
+        username={props.users[props.user].username}
+        updateMessages={props.updateMessages}
+      />
     </div>
   )
 }
@@ -27,7 +30,8 @@ function ChatWindow(props) {
 ChatWindow.propTypes = {
   user: PropTypes.number.isRequired,
   users: PropTypes.array.isRequired,
-  messages: PropTypes.array.isRequired
+  messages: PropTypes.array.isRequired,
+  updateMessages: PropTypes.func.isRequired
 }
 
 export default ChatWindow

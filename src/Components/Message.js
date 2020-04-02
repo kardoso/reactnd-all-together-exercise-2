@@ -19,7 +19,7 @@ function Message(props) {
 Message.propTypes = {
   index: PropTypes.number.isRequired,
   username: PropTypes.string.isRequired,
-  message: PropTypes.array.isRequired
+  message: PropTypes.object.isRequired
 }
 
 export default Message

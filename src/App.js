@@ -20,6 +20,12 @@ class App extends Component {
     ]
   }
 
+  updateMessages = message => {
+    this.setState(oldState => ({
+      messages: [...oldState.messages, message]
+    }))
+  }
+
   render() {
     return (
       <div className="App">
@@ -28,8 +34,18 @@ class App extends Component {
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
         <div className="container">
-          <ChatWindow user={0} users={users} messages={this.state.messages} />
-          <ChatWindow user={1} users={users} messages={this.state.messages} />
+          <ChatWindow
+            user={0}
+            users={users}
+            messages={this.state.messages}
+            updateMessages={this.updateMessages}
+          />
+          <ChatWindow
+            user={1}
+            users={users}
+            messages={this.state.messages}
+            updateMessages={this.updateMessages}
+          />
         </div>
       </div>
     )
