@@ -11,11 +11,16 @@ function ChatWindow(props) {
 
       <ul className="message-list">
         {props.messages.map((message, index) => (
-          <Message
-            index={index}
-            username={props.users[props.user].username}
-            message={message}
-          />
+          <li
+            key={index}
+            className={
+              message.username === props.users[props.user].username
+                ? 'message sender'
+                : 'message recipient'
+            }
+          >
+            <Message message={message} />
+          </li>
         ))}
       </ul>
 
