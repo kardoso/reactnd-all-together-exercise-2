@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 
 class InputForm extends Component {
+  state = {
+    messageContent: ''
+  }
   /*
   If the user did not type anything, he/she should not be
   allowed to submit.
   */
   isDisabled = () => {
-    return false
+    return this.state.messageContent === ''
   }
 
   render() {
@@ -17,6 +20,8 @@ class InputForm extends Component {
             type="text"
             className="form-control"
             placeholder="Enter your message..."
+            value={this.state.messageContent}
+            onChange={e => this.setState({ messageContent: e.target.value })}
           />
           <div className="input-group-append">
             <button className="btn submit-button" disabled={this.isDisabled()}>
